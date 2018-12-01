@@ -3,6 +3,8 @@
         "outDir": "./dist/",
         "module": "esnext",
         "moduleResolution": "node",
+        "allowSyntheticDefaultImports": true,
+        "esModuleInterop": true,
         "target": "es5",
         "removeComments": true,
         "strict": true,

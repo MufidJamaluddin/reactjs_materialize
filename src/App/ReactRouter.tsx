@@ -3,7 +3,6 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import App from "./App";
 import { Home, About, Contact, NotFound } from './Constant';
 
-
 /**
  * Router Aplikasi
  * 

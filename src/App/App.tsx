@@ -1,5 +1,6 @@
-import * as React from "react";
+import React from "react";
 import { Link } from 'react-router-dom';
+import "./../styles.css";
 
 /**
  * Struktur Aplikasi Utama
@@ -13,12 +14,15 @@ class App extends React.Component
     {
         return (
             <div>
-                <ul>
-                <li><Link to="/">Homes</Link></li>
-                <li><Link to="/about">About</Link></li>
-                <li><Link to="/contact">Contact</Link></li>
+                <h1 className="title">Single Page Application</h1>
+                <ul className="header">
+                    <li><Link to="/">Homes</Link></li>
+                    <li><Link to="/about">About</Link></li>
+                    <li><Link to="/contact">Contact</Link></li>
                 </ul>
-                {this.props.children}
+                <div className="content">
+                    {this.props.children}
+                </div>
             </div>
         )
     }

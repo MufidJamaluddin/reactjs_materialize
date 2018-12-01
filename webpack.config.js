@@ -2,14 +2,16 @@ const path = require('path');
 const AsyncChunkNames = require('webpack-async-chunk-names-plugin');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+
 module.exports = {
     entry: "./src/index.tsx",
     mode: "development",
     output: {
-        filename: "bundle.js",
-        chunkFilename: '[name].bundle.js',
-        path: __dirname + '/assets/js/',
-        publicPath: '/assets/js/'
+        filename: "[name].[contenthash].js",
+        chunkFilename: '[name].[contenthash].js',
+        path: __dirname + '/public/assets/js/',
+        publicPath: './assets/js/'
     },
 
     // Enable sourcemaps for debugging webpack's output.
@@ -20,7 +22,8 @@ module.exports = {
         extensions: [".ts", ".tsx", ".js", ".json"]
     },
 
-    module: {
+    module: 
+    {
         rules: [
             // All files with a '.ts' or '.tsx' extension will be handled by 'awesome-typescript-loader'.
             { test: /\.tsx?$/, loader: "awesome-typescript-loader" },
@@ -28,7 +31,31 @@ module.exports = {
             // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
             { enforce: "pre", test: /\.js$/, loader: "source-map-loader" },
 
-            { enforce: "pre", test: /\.js$/, exclude: /node_modules/, use: ['babel-loader'] }
+            // Babel Loader untuk Dynamic Import
+            { enforce: "pre", test: /\.js$/, exclude: /node_modules/, use: ['babel-loader'] },
+
+            // CSS Loader, Ekstrak ke Folder assets/css/
+            {
+                test: /\.css$/,
+                use: [
+                    {
+                        loader: MiniCssExtractPlugin.loader,
+                        options: {
+                            // you can specify a publicPath here
+                            // by default it use publicPath in webpackOptions.output
+                            publicPath: './assets/css/'
+                        }
+                    },
+                    "css-loader"
+                ]
+            },
+
+            // CSS minify
+            {
+                enforce: "pre",
+                test: /\.scss$/,
+                use: ['style-loader', 'css-loader', 'postcss-loader']
+            }
         ]
     },
 
@@ -36,23 +63,45 @@ module.exports = {
     // assume a corresponding global variable exists and use that instead.
     // This is important because it allows us to avoid bundling all of our
     // dependencies, which allows browsers to cache those libraries between builds.
-    externals: {
-        "react": "React",
-        "react-dom": "ReactDOM"
-    },
-
+    //externals: { },  
+    
     // webpack config
     plugins: [
         new HTMLWebpackPlugin({
-            filename: "../../index.html",
-            template: 'index.html'
+            filename: __dirname + "/public/index.html",
+            template: __dirname + '/index.html',
+            minify: {
+                html5                          : true,
+                collapseWhitespace             : true,
+                minifyCSS                      : true,
+                minifyJS                       : true,
+                minifyURLs                     : false,
+                removeAttributeQuotes          : true,
+                removeComments                 : true,
+                removeEmptyAttributes          : true,
+                removeOptionalTags             : true,
+                removeRedundantAttributes      : true,
+                removeScriptTypeAttributes     : true,
+                removeStyleLinkTypeAttributese : true,
+                useShortDoctype                : true
+            }
         }),
-        new AsyncChunkNames()
+        new AsyncChunkNames(),
+        new MiniCssExtractPlugin({
+            // Options similar to the same options in webpackOptions.output
+            // both options are optional
+            filename: "./../css/[name].[contenthash].css",
+            chunkFilename: "./../css/[name].[contenthash].css"
+        })
     ],
     
     // development server configuration
     devServer: {   
-        
+
+        contentBase: path.join(__dirname, 'public'),
+
+        inline: true,
+
         port: 3333,
 
         // must be `true` for SPAs
