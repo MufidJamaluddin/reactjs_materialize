@@ -1,7 +1,10 @@
+// Var Path
 const path = require('path');
+// Untuk Dynamic Import
 const AsyncChunkNames = require('webpack-async-chunk-names-plugin');
+// Generate HTML Output dari Template
 const HTMLWebpackPlugin = require('html-webpack-plugin');
-
+// Mengekstrak CSS dari import React
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
@@ -10,7 +13,7 @@ module.exports = {
     output: {
         filename: "[name].[contenthash].js",
         chunkFilename: '[name].[contenthash].js',
-        path: __dirname + '/public/assets/js/',
+        path: path.join(__dirname, '/public/assets/js/'),
         publicPath: './assets/js/'
     },
 
@@ -68,13 +71,11 @@ module.exports = {
     // webpack config
     plugins: [
         new HTMLWebpackPlugin({
-            filename: __dirname + "/public/index.html",
-            template: __dirname + '/index.html',
+            filename: path.join(__dirname, 'public/index.html'),
+            template: path.join(__dirname, 'index.html'),
             minify: {
                 html5                          : true,
                 collapseWhitespace             : true,
-                minifyCSS                      : true,
-                minifyJS                       : true,
                 minifyURLs                     : false,
                 removeAttributeQuotes          : true,
                 removeComments                 : true,

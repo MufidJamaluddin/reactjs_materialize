@@ -6,7 +6,7 @@
   "main": "index.tsx",
   "scripts": {
     "build": "webpack",
-    "start": "webpack-dev-server"
+    "start": "webpack-dev-server --inline --hot"
   },
   "author": {
     "name": "Mufid Jamaluddin",
