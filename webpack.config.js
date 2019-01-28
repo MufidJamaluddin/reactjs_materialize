@@ -11,9 +11,9 @@ module.exports = {
     entry: "./src/index.tsx",
     mode: "development",
     output: {
-        filename: "[name].[contenthash].js",
-        chunkFilename: '[name].[contenthash].js',
-        path: path.join(__dirname, '/public/assets/js/'),
+        filename: "[name].js",
+        chunkFilename: '[name].js',
+        path: path.join(__dirname, '/compiled/assets/js/'),
         publicPath: './assets/js/'
     },
 
@@ -71,7 +71,7 @@ module.exports = {
     // webpack config
     plugins: [
         new HTMLWebpackPlugin({
-            filename: path.join(__dirname, 'public/index.html'),
+            filename: path.join(__dirname, 'compiled/index.html'),
             template: path.join(__dirname, 'index.html'),
             minify: {
                 html5                          : true,
@@ -91,15 +91,15 @@ module.exports = {
         new MiniCssExtractPlugin({
             // Options similar to the same options in webpackOptions.output
             // both options are optional
-            filename: "./../css/[name].[contenthash].css",
-            chunkFilename: "./../css/[name].[contenthash].css"
+            filename: "./../css/[name].css",
+            chunkFilename: "./../css/[name].css"
         })
     ],
     
     // development server configuration
     devServer: {   
 
-        contentBase: path.join(__dirname, 'public'),
+        contentBase: path.join(__dirname, 'compiled'),
 
         inline: true,
 

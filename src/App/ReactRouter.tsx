@@ -1,7 +1,7 @@
 import * as React from "react";
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import App from "./App";
 import { Home, About, Contact, NotFound } from './Constant';
+import App from './App';
 
 /**
  * Router Aplikasi
@@ -14,7 +14,7 @@ class ReactRouter extends React.Component
     public render() 
     {
         return (
-            <BrowserRouter>
+            <BrowserRouter>                
                 <App>
                     <Switch>
                         <Route exact path = "/" component = {Home} />
