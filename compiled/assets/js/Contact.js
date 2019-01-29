@@ -112,6 +112,7 @@ var Contact = (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     Contact.prototype.render = function () {
+        document.title = "Contact";
         return (react__WEBPACK_IMPORTED_MODULE_1__["createElement"]("div", { className: "row" },
             react__WEBPACK_IMPORTED_MODULE_1__["createElement"]("div", { className: "col s6" },
                 react__WEBPACK_IMPORTED_MODULE_1__["createElement"]("h1", null, "Contact Page"),

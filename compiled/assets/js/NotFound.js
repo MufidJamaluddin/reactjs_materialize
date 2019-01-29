@@ -20,6 +20,7 @@ var NotFound = (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     NotFound.prototype.render = function () {
+        document.title = "404 Not Found";
         return (react__WEBPACK_IMPORTED_MODULE_1__["createElement"]("div", { className: "container" },
             react__WEBPACK_IMPORTED_MODULE_1__["createElement"]("h1", null, "404"),
             react__WEBPACK_IMPORTED_MODULE_1__["createElement"]("p", null, "Page not found - ")));
