@@ -4,7 +4,8 @@ import { Navbar } from "../Components/Navbar";
 import { Footer } from '../Components/Footer';
 import 'materialize-css/dist/css/materialize.min.css';
 import '../style.css';
-import 'materialize-css/dist/js/materialize.min.js';
+
+require('materialize-css/dist/js/materialize.min.js');
 
 /**
  * Struktur Aplikasi Utama

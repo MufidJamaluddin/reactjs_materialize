@@ -1,6 +1,6 @@
 node_modules/
-public/*.html
-public/assets/css/*.css
-public/assets/css/*.css.map
-public/assets/js/*.js
-public/assets/js/*.js.map
+compiled/*.html
+compiled/assets/css/*.css
+compiled/assets/css/*.css.map
+compiled/assets/js/*.js
+compiled/assets/js/*.js.map

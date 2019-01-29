@@ -128,7 +128,7 @@ export class Form extends React.Component<FormModel, FormStateModel>
         }
         else
         {
-            console.log(data);
+            console.log(JSON.stringify(data));
         }
     }
 

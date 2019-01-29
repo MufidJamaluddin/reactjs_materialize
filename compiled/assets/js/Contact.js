@@ -73,7 +73,7 @@ var Form = (function (_super) {
             });
         }
         else {
-            console.log(data);
+            console.log(JSON.stringify(data));
         }
     };
     Form.prototype.render = function () {

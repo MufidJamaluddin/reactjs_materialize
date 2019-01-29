@@ -28,6 +28,7 @@
   "devDependencies": {
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",
     "@types/history": "^4.7.2",
+    "@types/materialize-css": "^1.0.6",
     "@types/react-loadable": "^5.5.0",
     "@types/react-router": "^4.4.3",
     "autoprefixer": "^9.4.6",
