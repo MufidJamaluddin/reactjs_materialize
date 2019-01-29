@@ -8,6 +8,8 @@ class NotFound extends React.Component
 {
     render()
     {
+        document.title = "404 Not Found";
+
         return (
             <div className="container">
                 <h1>404</h1>

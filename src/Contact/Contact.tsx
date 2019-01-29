@@ -9,6 +9,8 @@ class Contact extends React.Component
 {
     render()
     {
+        document.title = "Contact";
+
         return (
             <div className="row">
                 <div className="col s6">
@@ -21,7 +23,7 @@ class Contact extends React.Component
                     <Form>
                         <Field name="email" type="email" label="email" success="Valid" error="The Email Format is Wrong"></Field>
                         <Field name="message" type="text" label="Message"></Field>
-                        <button type="submit">Send</button>
+                        <button className="waves-effect waves-light btn" type="submit">Send</button>
                     </Form>
                 </div>
             </div>

@@ -9,6 +9,8 @@ class About extends React.Component
 {
     render()
     {
+        document.title = "About";
+
         return (
             <div className="container">
                 <h1>About Page</h1>

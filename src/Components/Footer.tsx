@@ -5,10 +5,13 @@ import React from "react";
  * 
  * @author Mufid Jamaluddin
  */
-interface FooterModel { brand:string, cyear?:number }
+interface FooterModel { brand:string; cyear?:number; className:string }
 
 export class Footer extends React.Component<FooterModel>
 {
+    /**
+     * Mendapatkan tahun ini
+     */
     private getCurrentYear() : number
     {
         let date = new Date();
@@ -17,16 +20,22 @@ export class Footer extends React.Component<FooterModel>
         return year;
     }
 
+    /**
+     * Mendapatkan tahun copyright
+     */
     private getCopyrightYear() : number
     {
         if(this.props.cyear) return this.props.cyear;
         else return this.getCurrentYear();
     }
 
+    /**
+     * Render
+     */
     public render() 
     {
         return (
-            <footer>
+            <footer className={ this.props.className.concat(" page-footer") }>
                 <div className="container">
                     <div className="row">
                         { this.props.children }

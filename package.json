@@ -1,8 +1,7 @@
 {
-  "private": true,
-  "name": "cobareact",
+  "name": "reactjs_starter_materialize",
   "version": "1.0.0",
-  "description": "Coba coba eyu",
+  "description": "ReactJS Starter with Lazy Import, Typescript, Code Splitting, and Materialize Component",
   "main": "index.tsx",
   "scripts": {
     "build": "webpack",

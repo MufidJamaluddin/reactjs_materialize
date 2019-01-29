@@ -142,7 +142,7 @@ module.exports = {
                     minChunks: 2,
                     chunks: 'async',
                     priority: 10,
-                    reuseExistingChunk: true,
+                    reuseExistingChunk: false,
                     enforce: true
                 }
             }

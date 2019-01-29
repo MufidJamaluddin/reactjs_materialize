@@ -47,13 +47,13 @@ export class Field extends React.Component<FieldModel>
         if(this.props.pattern)
         {
             return (
-                <input type={this.props.type} pattern={this.props.pattern} className="validate"></input>
+                <input type={this.props.type} name={this.props.name} pattern={this.props.pattern} className="validate"></input>
             )
         }
         else
         {
             return (
-                <input type={this.props.type}></input>
+                <input type={this.props.type} name={this.props.name}></input>
             )
         }
     }
@@ -69,7 +69,7 @@ export class Field extends React.Component<FieldModel>
                 <div className={ this.getHtmlClassName() }>
                     { this.getJsxInput() }
                     <label>{this.props.label}</label>
-                    <span className="helper-text" data-error={this.props.error || ""} data-success={this.props.success || ""}></span>
+                    <span className="helper-text" data-error={ this.props.error } data-success={ this.props.success }></span>
                 </div>
             )
         }
@@ -95,6 +95,14 @@ interface FormStateModel { error:Array<string> }
 
 export class Form extends React.Component<FormModel, FormStateModel>
 {
+    readonly state:FormStateModel = { error: [] };
+    
+    constructor(props:Readonly<FormModel>)
+    {
+        super(props);
+        this.onSubmit = this.onSubmit.bind(this);
+    }
+
     /**
      * Menghandle Submit Form
      * @param event Event Klik Form
@@ -104,13 +112,13 @@ export class Form extends React.Component<FormModel, FormStateModel>
         event.preventDefault();
         const form:HTMLFormElement = event.currentTarget;
         const data = new FormData(form);
-
-        this.state.error.length = 0;
-
+        
         let obj = this;
 
         if(this.props.action)
         {
+            this.state.error.length = 0;
+            
             fetch(this.props.action, {
                 method: this.props.method || "POST",
                 body: data
@@ -134,7 +142,7 @@ export class Form extends React.Component<FormModel, FormStateModel>
         });
 
         return (
-            <form className={ this.props.className || "col s12" } onSubmit={ this.onSubmit }>
+            <form className={ this.props.className || "container" } onSubmit={ this.onSubmit }>
                 <div className="row">
                     { this.props.children }
                 </div>

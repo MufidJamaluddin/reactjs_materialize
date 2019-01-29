@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { Navbar } from "../Components/Navbar";
 import { Footer } from '../Components/Footer';
 import 'materialize-css/dist/css/materialize.min.css';
+import '../style.css';
+import 'materialize-css/dist/js/materialize.min.js';
 
 /**
  * Struktur Aplikasi Utama
@@ -18,19 +20,21 @@ class App extends React.Component
     {
         return (
             <div>
-                <Navbar brand={ App.appname }>
-                    <li><Link to="/">Homes</Link></li>
-                    <li><Link to="/about">About</Link></li>
-                    <li><Link to="/contact">Contact</Link></li>
-                </Navbar>
-                <div className="container">
+                <header>
+                    <Navbar brand={ App.appname }>
+                        <li><Link to="/">Homes</Link></li>
+                        <li><Link to="/about">About</Link></li>
+                        <li><Link to="/contact">Contact</Link></li>
+                    </Navbar>                   
+                </header>
+                <main className="container">
                     {this.props.children}
-                </div>
-                <Footer brand={ App.appname }>
-                    <div className="s6 center-align">
+                </main>
+                <Footer brand={ App.appname } className="orange">
+                    <div className="col s6">
                         Bagian Kiri
                     </div>
-                    <div className="s6 center-align">
+                    <div className="col s6">
                         Bagian Kanan
                     </div>
                 </Footer>
