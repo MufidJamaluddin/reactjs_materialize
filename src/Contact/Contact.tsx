@@ -23,7 +23,9 @@ class Contact extends React.Component
                     <Form>
                         <Field name="email" type="email" label="email" success="Valid" error="The Email Format is Wrong"></Field>
                         <Field name="message" type="text" label="Message"></Field>
-                        <button className="waves-effect waves-light btn" type="submit">Send</button>
+                        <div className="col s12">
+                            <button className="waves-effect waves-light btn" type="submit">Send</button>
+                        </div>
                     </Form>
                 </div>
             </div>

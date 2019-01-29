@@ -5,8 +5,6 @@ import { Footer } from '../Components/Footer';
 import 'materialize-css/dist/css/materialize.min.css';
 import '../style.css';
 
-require('materialize-css/dist/js/materialize.min.js');
-
 /**
  * Struktur Aplikasi Utama
  * Children : Isi Page
@@ -15,12 +13,12 @@ require('materialize-css/dist/js/materialize.min.js');
  */
 class App extends React.Component 
 {
-    static appname:string = "SPA Starter";
+    static appname:string = "SPA Starter Mufid";
  
     public render() 
     {
         return (
-            <div>
+            <div className="ubody">
                 <header>
                     <Navbar brand={ App.appname }>
                         <li><Link to="/">Homes</Link></li>

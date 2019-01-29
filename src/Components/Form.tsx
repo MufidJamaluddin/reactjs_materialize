@@ -1,4 +1,5 @@
 import React from "react";
+import M from "materialize-css";
 
 /**
  * Field Form
@@ -91,12 +92,9 @@ export class Field extends React.Component<FieldModel>
  * @author Mufid Jamaluddin
  */
 interface FormModel { className?:string; action?:string; method?:string }
-interface FormStateModel { error:Array<string> }
 
-export class Form extends React.Component<FormModel, FormStateModel>
-{
-    readonly state:FormStateModel = { error: [] };
-    
+export class Form extends React.Component<FormModel>
+{   
     constructor(props:Readonly<FormModel>)
     {
         super(props);
@@ -116,19 +114,25 @@ export class Form extends React.Component<FormModel, FormStateModel>
         let obj = this;
 
         if(this.props.action)
-        {
-            this.state.error.length = 0;
-            
+        {            
             fetch(this.props.action, {
                 method: this.props.method || "POST",
                 body: data
             }).catch(function(error){
-                obj.state.error.push(error.statusText);
+                M.toast({ html: error });
             });
         }
         else
         {
-            console.log(JSON.stringify(data));
+            let json:any = {};
+
+            data.forEach(function(value, key){
+                json[key] = value;
+            });
+
+            console.log(json);
+
+            M.toast({ html: "Submit Tanpa Arah Action!.." })
         }
     }
 
@@ -137,10 +141,6 @@ export class Form extends React.Component<FormModel, FormStateModel>
      */
     public render()
     {
-        this.state.error.map(function(value){
-            M.toast({html: value})
-        });
-
         return (
             <form className={ this.props.className || "container" } onSubmit={ this.onSubmit }>
                 <div className="row">
