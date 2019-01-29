@@ -7,3 +7,10 @@
 main{
     flex: 1 0 auto;
 }
+
+.loader {
+    position: fixed;
+    top :35%;
+    left: 50%;
+    margin: auto;
+}

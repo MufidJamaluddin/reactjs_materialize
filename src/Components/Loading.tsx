@@ -1,4 +1,5 @@
 import * as React from "react";
+import '../style.css';
 
 /**
  * Fungsi untuk menampilkan 
@@ -11,7 +12,7 @@ function Loading(props: any) : JSX.Element
     if(props.error)
     {
         return (
-            <div className="container center">
+            <div className="loader">
                 Error! 
                 <button className="btn waves-effect waves-light lime" onClick={ props.retry }>
                     Retry
@@ -23,7 +24,7 @@ function Loading(props: any) : JSX.Element
     else
     {
         return (
-            <div className="container valign-wrapper center-align">
+            <div className="loader">
                 <div className="preloader-wrapper big active">
                     <div className="spinner-layer spinner-blue">
                         <div className="circle-clipper left">
