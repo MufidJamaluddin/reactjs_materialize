@@ -8,10 +8,9 @@ import App from './App';
  * 
  * @author Mufid Jamaluddin
  */
-class ReactRouter extends React.Component 
+class Router extends React.Component 
 {
-    // Method Render
-    public render() 
+    public render() : JSX.Element
     {
         return (
             <BrowserRouter>                
@@ -29,4 +28,4 @@ class ReactRouter extends React.Component
     }
 }
 
-export default ReactRouter;
+export default Router;

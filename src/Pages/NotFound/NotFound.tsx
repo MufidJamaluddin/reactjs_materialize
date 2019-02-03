@@ -6,10 +6,15 @@ import * as React from "react";
  */
 class NotFound extends React.Component
 {
-    render()
-    {
-        document.title = "404 Not Found";
+    private title:string = "404 Not Found";
 
+    public componentWillMount() : void
+    {
+        document.title = this.title;
+    }
+
+    public render() : JSX.Element
+    {
         return (
             <div className="container">
                 <h1>404</h1>

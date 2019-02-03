@@ -7,10 +7,15 @@ import * as React from "react";
  */
 class About extends React.Component
 {
-    public render()
-    {
-        document.title = "About";
+    private title:string = "About";
 
+    public componentWillMount() : void
+    {
+        document.title = this.title;
+    }
+
+    public render() : JSX.Element
+    {
         return (
             <div className="container">
                 <h1>About Page</h1>

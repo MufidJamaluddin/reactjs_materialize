@@ -7,6 +7,13 @@ import { Hello } from "./Hello";
  */
 class Home extends React.Component
 {
+    private title:string = "Home SPA";
+
+    public componentWillMount() : void
+    {
+        document.title = this.title;
+    }
+
     render()
     {
         return (

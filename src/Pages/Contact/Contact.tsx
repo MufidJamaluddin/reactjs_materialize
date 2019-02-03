@@ -7,10 +7,15 @@ import { Form, Field } from '../../MaterializeComponents/Form';
  */
 class Contact extends React.Component
 {
-    render()
-    {
-        document.title = "Contact";
+    private title:string = "Contact";
 
+    public componentWillMount() : void
+    {
+        document.title = this.title;
+    }
+
+    public render() : JSX.Element
+    {
         return (
             <div className="row">
                 <div className="col s6">

@@ -1,10 +1,10 @@
 import React from "react";
 import { render } from "react-dom";
 
-import ReactRouter from "./App/ReactRouter";
+import Router from "./App/Router";
 
 /**
  * Render Berdasarkan Router
  * @author Mufid Jamaluddin
  */
-render(<ReactRouter/>, document.getElementById("app-root"));
+render(<Router/>, document.getElementById("app-root"));
