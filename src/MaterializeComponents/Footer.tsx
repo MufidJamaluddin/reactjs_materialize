@@ -32,7 +32,7 @@ export class Footer extends React.Component<FooterModel>
     /**
      * Render
      */
-    public render() 
+    public render() : JSX.Element
     {
         return (
             <footer className={ this.props.className.concat(" page-footer") }>

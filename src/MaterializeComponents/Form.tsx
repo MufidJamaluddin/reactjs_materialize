@@ -62,7 +62,7 @@ export class Field extends React.Component<FieldModel>
     /**
      * Render Field
      */
-    public render()
+    public render() : JSX.Element
     {
         if(this.props.success && this.props.error)
         {
@@ -105,11 +105,11 @@ export class Form extends React.Component<FormModel>
      * Menghandle Submit Form
      * @param event Event Klik Form
      */
-    private onSubmit(event: React.FormEvent<HTMLFormElement>)
+    private onSubmit(event: React.FormEvent<HTMLFormElement>) : void
     {
         event.preventDefault();
         const form:HTMLFormElement = event.currentTarget;
-        const data = new FormData(form);
+        const data:FormData = new FormData(form);
         
         let obj = this;
 
@@ -139,7 +139,7 @@ export class Form extends React.Component<FormModel>
     /**
      * Render Form
      */
-    public render()
+    public render() : JSX.Element
     {
         return (
             <form className={ this.props.className || "container" } onSubmit={ this.onSubmit }>

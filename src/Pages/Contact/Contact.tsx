@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Form, Field } from '../Components/Form';
+import { Form, Field } from '../../MaterializeComponents/Form';
 
 /**
  * Halaman Contact

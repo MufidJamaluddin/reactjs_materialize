@@ -7,7 +7,7 @@ import * as React from "react";
  */
 class About extends React.Component
 {
-    render()
+    public render()
     {
         document.title = "About";
 

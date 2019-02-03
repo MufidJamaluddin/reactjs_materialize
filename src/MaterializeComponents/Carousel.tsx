@@ -1,7 +1,7 @@
 import React from "react";
 
 /**
- * Carousel Gambar
+ * Item Carousel Gambar
  * doc : https://materializecss.com/carousel.html
  * @author Mufid Jamaluddin
  */
@@ -22,8 +22,11 @@ export class CarouselItem extends React.Component<CarouselItemModel>
     }
 }
 
-
-
+/**
+ * Carousel Gambar
+ * doc : https://materializecss.com/carousel.html
+ * @author Mufid Jamaluddin
+ */
 export class Carousel extends React.Component<Partial<M.CarouselOptions>>
 {
     /**
@@ -69,4 +72,3 @@ export class Carousel extends React.Component<Partial<M.CarouselOptions>>
         )
     }
 }
-

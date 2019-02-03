@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from 'react-router-dom';
-import { Navbar } from "../Components/Navbar";
-import { Footer } from '../Components/Footer';
 import 'materialize-css/dist/css/materialize.min.css';
 import '../style.css';
+import { Navbar } from '../MaterializeComponents/Navbar';
+import { Footer } from '../MaterializeComponents/Footer';
 
 /**
  * Struktur Aplikasi Utama

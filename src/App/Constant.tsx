@@ -1,5 +1,5 @@
 import Loadable from "react-loadable";
-import Loading from "../Components/Loading";
+import { Loading } from '../MaterializeComponents/Loading';
 
 /**
  * Objek Page yang Diload secara on-demand (Lazy)
@@ -8,21 +8,21 @@ import Loading from "../Components/Loading";
  * @author Mufid Jamaluddin
  */
 export const Home = Loadable({
-    loader: () => import('../Home/Home'),
+    loader: () => import('../Pages/Home/Home'),
     loading: Loading
 });
 
 export const NotFound = Loadable({
-    loader: () => import('../NotFound/NotFound'),
+    loader: () => import('../Pages/NotFound/NotFound'),
     loading: Loading
 });
 
 export const About = Loadable({
-    loader: () => import('../About/About'),
+    loader: () => import('../Pages/About/About'),
     loading: Loading
 });
 
 export const Contact = Loadable({
-    loader: () => import('../Contact/Contact'),
+    loader: () => import('../Pages/Contact/Contact'),
     loading: Loading 
 });

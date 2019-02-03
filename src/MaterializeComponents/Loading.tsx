@@ -7,7 +7,7 @@ import '../style.css';
  * 
  * @author Mufid Jamaluddin
  */
-function Loading(props: any) : JSX.Element
+export function Loading(props: any) : JSX.Element
 {
     if(props.error)
     {
@@ -42,5 +42,3 @@ function Loading(props: any) : JSX.Element
         )
     }
 }
-
-export default Loading;

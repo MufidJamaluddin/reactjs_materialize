@@ -19,7 +19,7 @@ export class Navbar extends React.Component<NavbarModel>
         M.Sidenav.init(this.Sidenav);
     }
 
-    public render() 
+    public render() : JSX.Element
     {
         return (
             <nav className="light-blue lighten-1" role="navigation">

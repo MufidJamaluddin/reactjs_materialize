@@ -1,17 +1,18 @@
 import React from "react";
 import { Link } from 'react-router-dom';
 
-import M from "materialize-css";
+import M, { Openable } from "materialize-css";
 
 /**
  * Sidenav Materialize
  * 
  * @author Mufid Jamaluddin
  */
-interface SidenavModel { brand?:string; right:JSX.Element }
+interface SidenavModel { brand?:string; right:JSX.Element; isStatic?:boolean; }
 
-export class Sidenav extends React.Component<SidenavModel & Partial<M.SidenavOptions>>
+export class Sidenav extends React.Component<SidenavModel & Partial<M.SidenavOptions>> implements Openable
 {
+    public isOpen: boolean = false;
     private sidenav_element?:any;
     private sidenav_instance?:M.Sidenav;
 
@@ -36,6 +37,30 @@ export class Sidenav extends React.Component<SidenavModel & Partial<M.SidenavOpt
         }
     }
 
+    public open(): void
+    {
+        if(this.sidenav_instance) 
+        {
+            this.sidenav_instance.open();
+            this.isOpen = this.sidenav_instance.isOpen;
+        }
+    }
+
+    public close() : void
+    {
+        if(this.sidenav_instance)
+        { 
+            this.sidenav_instance.close();
+            this.isOpen = this.sidenav_instance.isOpen;
+        }
+    }
+
+    public getSidenavMode() : string
+    {
+        if(this.props.isStatic) return "sidenav sidenav-fixed";
+        else return "sidenav";
+    }
+
     public render() : JSX.Element
     {
         return (
@@ -52,7 +77,7 @@ export class Sidenav extends React.Component<SidenavModel & Partial<M.SidenavOpt
                 <ul 
                     ref={ sidenav => { this.sidenav_element = sidenav }}
                     id="nav-mobile" 
-                    className="sidenav"
+                    className={ this.getSidenavMode() }
                 >
                     { this.props.children }
                 </ul>
