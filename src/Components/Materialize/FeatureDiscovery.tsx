@@ -1,16 +1,33 @@
 import React from "react";
+import { Openable } from '../Behavior/Openable';
 
 /**
  * FeatureDiscovery
  * doc : https://materializecss.com/feature-discovery.html
  * @author Mufid Jamaluddin
  */
-interface FeatureDiscoveryModel { icon:string; target:string; }
+interface FeatureDiscoveryModel { target:string; open:boolean; }
 
-export class FeatureDiscovery extends React.Component<FeatureDiscoveryModel>
+export class FeatureDiscovery extends React.Component<FeatureDiscoveryModel> implements Openable
 {
     private tapElement?:any;
     private tapInstance?:M.TapTarget;
+
+    public isOpen(): boolean 
+    {
+        if(this.tapInstance) return this.tapInstance.isOpen;
+        else return false;
+    }
+
+    public open(): void 
+    {
+        if(this.tapInstance) this.tapInstance.open();
+    }
+    
+    public close(): void 
+    {
+        if(this.tapInstance) this.tapInstance.close();
+    }
 
     /**
      * Component Akan di Load
@@ -20,7 +37,7 @@ export class FeatureDiscovery extends React.Component<FeatureDiscoveryModel>
         M.TapTarget.init(this.tapElement);
 
         this.tapInstance = M.TapTarget.getInstance(this.tapElement);
-        this.tapInstance.open();
+        if(this.props.open) this.tapInstance.open();
     }
 
     /**

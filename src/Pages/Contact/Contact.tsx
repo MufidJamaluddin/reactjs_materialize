@@ -1,18 +1,14 @@
 import * as React from "react";
-import { Form, Field } from '../../MaterializeComponents/Form';
+import { Page } from '../Page';
+import { Form, FieldForm } from '../../Components/Materialize';
 
 /**
  * Halaman Contact
  * @author Mufid Jamaluddin
  */
-class Contact extends React.Component
+class Contact extends Page
 {
-    private title:string = "Contact";
-
-    public componentWillMount() : void
-    {
-        document.title = this.title;
-    }
+    protected title:string = "Contact";
 
     public render() : JSX.Element
     {
@@ -26,8 +22,8 @@ class Contact extends React.Component
                 </div>
                 <div className="col s6">
                     <Form>
-                        <Field name="email" type="email" label="Email" success="Valid" error="The Email Format is Wrong"></Field>
-                        <Field name="message" type="text" label="Message"></Field>
+                        <FieldForm name="email" type="email" label="Email" success="Valid" error="The Email Format is Wrong"></FieldForm>
+                        <FieldForm name="message" type="text" label="Message"></FieldForm>
                         <div className="col s12">
                             <button className="waves-effect waves-light btn" type="submit">Send</button>
                         </div>

@@ -99,6 +99,7 @@ export class Form extends React.Component<FormModel>
     {
         super(props);
         this.onSubmit = this.onSubmit.bind(this);
+        this.sendData = this.sendData.bind(this);
     }
 
     /**
@@ -110,14 +111,22 @@ export class Form extends React.Component<FormModel>
         event.preventDefault();
         const form:HTMLFormElement = event.currentTarget;
         const data:FormData = new FormData(form);
-        
-        let obj = this;
 
+        this.sendData(data);
+    }
+
+    /**
+     * Mengirimkan Data ke Server
+     */
+    protected sendData(data: FormData)
+    {
         if(this.props.action)
         {            
             fetch(this.props.action, {
                 method: this.props.method || "POST",
                 body: data
+            }).then(function(value: Response){
+                M.toast({ html: value.text.toString() });
             }).catch(function(error){
                 M.toast({ html: error });
             });

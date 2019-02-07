@@ -1,5 +1,6 @@
 import * as React from "react";
-import '../style.css';
+import '../../style.css';
+import { LoadingComponentProps } from 'react-loadable';
 
 /**
  * Fungsi untuk menampilkan 
@@ -7,21 +8,35 @@ import '../style.css';
  * 
  * @author Mufid Jamaluddin
  */
-export function Loading(props: any) : JSX.Element
+export class Loading extends React.Component<LoadingComponentProps>
 {
-    if(props.error)
+    constructor(props: Readonly<LoadingComponentProps>)
+    {
+        super(props);
+        this.getErrorMessage = this.getErrorMessage.bind(this);
+    }
+
+    public getErrorMessage() : string
+    {
+        if(this.props.error) return String(this.props.error);
+        else if(this.props.timedOut) return " Connection Timed Out!";
+        else return " Load a Page";
+    }
+
+    protected retryView(errorMessage: string, onRetry: () => void) : JSX.Element
     {
         return (
             <div className="loader">
-                Error! 
-                <button className="btn waves-effect waves-light lime" onClick={ props.retry }>
+                Error { errorMessage }
+                <button className="btn waves-effect waves-light lime" onClick={ onRetry }>
                     Retry
                     <i className="material-icons right">autorenew</i>
                 </button>
             </div>
-        )
+        );
     }
-    else
+
+    protected loadingView() : JSX.Element
     {
         return (
             <div className="loader">
@@ -40,5 +55,13 @@ export function Loading(props: any) : JSX.Element
                 </div>
             </div>
         )
+    }
+
+    public render() : JSX.Element
+    {
+        if(this.props.error)
+            return this.retryView(this.getErrorMessage(), this.props.retry);
+        else
+            return this.loadingView();
     }
 }

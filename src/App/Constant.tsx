@@ -1,5 +1,5 @@
 import Loadable from "react-loadable";
-import { Loading } from '../MaterializeComponents/Loading';
+import { Loading } from '../Components/Materialize/Loading';
 
 /**
  * Objek Page yang Diload secara on-demand (Lazy)

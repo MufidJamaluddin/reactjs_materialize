@@ -1,23 +1,29 @@
 import * as React from "react";
 import { Hello } from "./Hello";
+import { FeatureDiscovery } from '../../Components/Materialize/FeatureDiscovery';
+import { Page } from '../Page';
 
 /**
  * Halaman Utama
  * @author Mufid Jamaluddin
  */
-class Home extends React.Component
+class Home extends Page
 {
-    private title:string = "Home SPA";
+    protected title:string = "Home SPA";
 
-    public componentWillMount() : void
-    {
-        document.title = this.title;
-    }
-
-    render()
+    public render() : JSX.Element
     {
         return (
-            <Hello name="Mufid Jamaluddin" />
+            <div className="container">
+                <Hello name="Mufid Jamaluddin" />
+                <button id="hoho" className="btn-floating btn-large waves-effect waves-light red">
+                    <i className="material-icons">add</i>
+                </button>
+                <FeatureDiscovery target="hoho" open={true}>
+                    <h1>Add</h1>
+                    <p>A Bunch of Text</p>
+                </FeatureDiscovery>
+            </div>
         )
     }
 }

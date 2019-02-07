@@ -1,16 +1,41 @@
 import React from "react";
+import { Openable } from '../Behavior/Openable';
 
 /**
  * Material Box
  * doc : https://materializecss.com/media.html
  * @author : Mufid Jamaluddin
  */
-interface MaterialBoxModel { width:number; image:string; }
+interface MaterialBoxModel { width:number; image:string; open?:boolean; }
 
-export class MaterialBox extends React.Component<MaterialBoxModel & Partial<M.MaterialboxOptions>>
+export class MaterialBox extends React.Component<MaterialBoxModel & Partial<M.MaterialboxOptions>> implements Openable
 {
+    private mbOpen: boolean = false;
     private materialBoxElement?:any;
     private materialBoxInstance?:M.Materialbox;
+
+    public isOpen(): boolean 
+    {
+        return this.mbOpen;
+    }
+
+    public open(): void 
+    {
+        if(this.materialBoxInstance)
+        { 
+            this.materialBoxInstance.open();
+            this.mbOpen = true;
+        }
+    }
+
+    public close(): void 
+    {
+        if(this.materialBoxInstance)
+        {
+            this.materialBoxInstance.close();
+            this.mbOpen = false;
+        }
+    }
 
     public componentDidMount() : void
     {
@@ -20,7 +45,7 @@ export class MaterialBox extends React.Component<MaterialBoxModel & Partial<M.Ma
 
         this.materialBoxInstance = M.Materialbox.getInstance(this.materialBoxElement);
 
-        this.materialBoxInstance.open();
+        if(this.props.open) this.materialBoxInstance.open();
     }
 
     public componentWillUnmount() : void

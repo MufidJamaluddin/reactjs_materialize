@@ -1,17 +1,13 @@
 import * as React from "react";
+import { Page } from '../Page';
 
 /**
  * Halaman Tidak Ditemukan
  * @author Mufid Jamaluddin
  */
-class NotFound extends React.Component
+class NotFound extends Page
 {
-    private title:string = "404 Not Found";
-
-    public componentWillMount() : void
-    {
-        document.title = this.title;
-    }
+    protected title:string = "404 Not Found";
 
     public render() : JSX.Element
     {

@@ -1,16 +1,15 @@
 import React, { Component } from "react";
-import { Openable } from 'materialize-css';
+import { Openable } from '../Behavior/Openable';
 
 /**
  * Modal
  * doc : https://materializecss.com/modals.html
  * @author Mufid Jamaluddin
  */
-interface ModalModel { type?:string; id:string; footer?:JSX.Element }
+interface ModalModel { type?:string; id:string; footer?:JSX.Element; open?:boolean; }
 
 export class Modal extends Component<ModalModel & Partial<M.ModalOptions>> implements Openable
 {
-    public isOpen: boolean = false;
     private modalElement?:any;
     private modalInstance?:M.Modal;
 
@@ -24,7 +23,7 @@ export class Modal extends Component<ModalModel & Partial<M.ModalOptions>> imple
 
         this.modalInstance = M.Modal.getInstance(this.modalElement);
 
-        this.isOpen = this.modalInstance.isOpen;
+        if(this.props.open) this.modalInstance.open();
     }
 
     public componentWillUnmount() : void
@@ -32,22 +31,20 @@ export class Modal extends Component<ModalModel & Partial<M.ModalOptions>> imple
         if(this.modalInstance) this.modalInstance.destroy();
     }
 
+    public isOpen(): boolean 
+    {
+        if(this.modalInstance) return this.modalInstance.isOpen;
+        else return false;
+    }
+
     public open() : void
     {
-        if(this.modalInstance) 
-        {
-            this.modalInstance.open();
-            this.isOpen = this.modalInstance.isOpen;
-        }
+        if(this.modalInstance) this.modalInstance.open();
     }
 
     public close() : void
     {
-        if(this.modalInstance)
-        {
-            this.modalInstance.close();
-            this.isOpen = this.modalInstance.isOpen;
-        } 
+        if(this.modalInstance) this.modalInstance.close();
     }
 
     public getType() : string
@@ -61,7 +58,7 @@ export class Modal extends Component<ModalModel & Partial<M.ModalOptions>> imple
                 return "modal bottom-sheet";
 
             default:
-                return "modal";
+                return "modal " + this.props.type;
         }
     }
 

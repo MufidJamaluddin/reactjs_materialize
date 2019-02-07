@@ -5,7 +5,7 @@ import React from "react";
  * 
  * @author Mufid Jamaluddin
  */
-interface FooterModel { brand:string; cyear?:number; className:string }
+interface FooterModel { brand:string; year?:number; className:string }
 
 export class Footer extends React.Component<FooterModel>
 {
@@ -25,7 +25,7 @@ export class Footer extends React.Component<FooterModel>
      */
     private getCopyrightYear() : number
     {
-        if(this.props.cyear) return this.props.cyear;
+        if(this.props.year) return this.props.year;
         else return this.getCurrentYear();
     }
 

@@ -1,18 +1,14 @@
-import * as React from "react";
+import { Page } from '../Page';
+import React from 'react';
 
 /**
  * Halaman About
  * 
  * @author Mufid Jamaluddin
  */
-class About extends React.Component
+class About extends Page
 {
-    private title:string = "About";
-
-    public componentWillMount() : void
-    {
-        document.title = this.title;
-    }
+    protected title:string = "About";
 
     public render() : JSX.Element
     {
